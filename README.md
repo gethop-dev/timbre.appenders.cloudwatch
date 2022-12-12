@@ -34,7 +34,7 @@ The module also accepts the following optional keys:
 ``` clojure
 {:dev.gethop.timbre.appenders/cloudwatch
  {:log-group-name "/aws/eb/hop-test"
-  :batch-config {:size 1000 :timeout 300}}
+  :batch-config {:size 1000 :timeout 300}}}
 ```
 
 ## License
