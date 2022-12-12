@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 
-## 0.1.0 - 2022-05-16
+## 0.1.0 - 2022-12-12
 
 ### Added
 - Initial library version
