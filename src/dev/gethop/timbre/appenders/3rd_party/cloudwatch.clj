@@ -71,7 +71,7 @@
 
                   true
                   util/->map-camel-case)
-        {:keys [next-sequence-token type category expected-sequence-token] :as result}
+        {:keys [next-sequence-token type category expected-sequence-token]}
         (util/->map-kebab-case
          (aws/invoke client {:op :PutLogEvents
                              :request request}))]

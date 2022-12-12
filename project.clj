@@ -36,5 +36,6 @@
                                               :boxed-math
                                               :non-clojure-file
                                               :unused-namespaces
+                                              :unused-locals
                                               :performance]
                             :debug [:progress :time]}}})
