@@ -29,14 +29,10 @@ jobs:
           java-version: '17'
 
       - name: Install Clojure Tools
-        uses: DeLaGuardo/setup-clojure@5.1
+        uses: DeLaGuardo/setup-clojure@10.1
         with:
           lein: 2.9.8
-
-      - name: Install clj-kondo
-        uses: DeLaGuardo/setup-clj-kondo@master
-        with:
-          version: '2020.04.05'
+          clj-kondo: 2022.11.02
 
       - name: Check formatting
         run: lein cljfmt check
