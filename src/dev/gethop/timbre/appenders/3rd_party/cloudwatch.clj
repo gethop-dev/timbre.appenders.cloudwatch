@@ -165,17 +165,21 @@
   [{:keys [appender-config] :as config}]
   (let [config (-> config
                    (add-client)
-                   (add-all-channels!))
-        min-level (get appender-config :min-level :info)]
-    {:enabled? true
-     :async? true
-     :rate-limit nil
-     :output-fn :inherit
-     :min-level (if (string? min-level)
-                  (keyword min-level)
-                  min-level)
-     :fn (send-log-fn config)
-     ::config config}))
+                   (add-all-channels!))]
+    (cond->
+     {:enabled? true
+      :async? true
+      :rate-limit nil
+      :output-fn :inherit
+      :min-level :info
+      :fn (send-log-fn config)
+      ::config config}
+
+      appender-config
+      (merge appender-config)
+
+      (string? (:min-level appender-config))
+      (update :min-level keyword))))
 
 (defn- halt!
   [{:keys [channels]}]
