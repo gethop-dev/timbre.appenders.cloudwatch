@@ -1,4 +1,4 @@
-(defproject dev.gethop/timbre.appenders.cloudwatch "0.1.0"
+(defproject dev.gethop/timbre.appenders.cloudwatch "0.1.1-SNAPSHOT"
   :description "Duct module that provides a Cloudwatch Timbre log appender"
   :url "https://github.com/gethop-dev/timbre.appenders.cloudwatch"
   :license {:name "Mozilla Public License 2.0"
