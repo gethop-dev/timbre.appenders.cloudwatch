@@ -32,7 +32,7 @@ The module also accepts the following optional keys:
 ### Example
 
 ``` clojure
-{:dev.gethop.timbre.appenders/cloudwatch
+{:dev.gethop.timbre.appenders.module/cloudwatch
  {:log-group-name "/aws/eb/hop-test"
   :batch-config {:size 1000 :timeout 300}}}
 ```
