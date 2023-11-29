@@ -55,7 +55,7 @@
       true
 
       :else
-      (do (util/format-invoke-result-error result)
+      (do (util/print-error result)
           false))))
 
 (defn- send-log-events*
@@ -91,7 +91,7 @@
         (send-log-events* config stream-name log-events nil))
 
       :else
-      (do (util/format-invoke-result-error result)
+      (do (util/print-error result)
           sequence-token))))
 
 (defn- send-log-events

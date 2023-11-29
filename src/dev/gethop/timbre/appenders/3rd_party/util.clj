@@ -18,7 +18,8 @@
   [m]
   (cske/transform-keys csk/->camelCaseKeyword m))
 
-(defmacro format-invoke-result-error
+(defmacro print-error
+  "Prints an error with the received data."
   [invoke-result]
   (let [line-number (:line (meta &form))]
     `(let [timestamp# (jt/instant)
