@@ -4,7 +4,9 @@
 
 (ns dev.gethop.timbre.appenders.3rd-party.util
   (:require [camel-snake-kebab.core :as csk]
-            [camel-snake-kebab.extras :as cske]))
+            [camel-snake-kebab.extras :as cske]
+            [java-time :as jt]
+            [java-time.temporal]))
 
 (defn ->map-kebab-case
   "Transforms all map keys to kebab-case keywords."
@@ -15,3 +17,10 @@
   "Transforms all map keys to camelCase keywords."
   [m]
   (cske/transform-keys csk/->camelCaseKeyword m))
+
+(defmacro format-invoke-result-error
+  [invoke-result]
+  (let [line-number (:line (meta &form))]
+    `(let [timestamp# (jt/instant)
+           formatted-result# (with-out-str (clojure.pprint/pprint ~invoke-result))]
+       (println (format "%s ERROR [%s:%d] - %s" (str timestamp#) (ns-name ~*ns*) ~line-number formatted-result#)))))

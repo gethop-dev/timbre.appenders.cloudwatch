@@ -55,7 +55,8 @@
       true
 
       :else
-      false)))
+      (do (util/format-invoke-result-error result)
+          false))))
 
 (defn- send-log-events*
   [{:keys [client log-group-name] :as config}
@@ -71,7 +72,7 @@
 
                   true
                   util/->map-camel-case)
-        {:keys [next-sequence-token type category expected-sequence-token]}
+        {:keys [next-sequence-token type category expected-sequence-token] :as result}
         (util/->map-kebab-case
          (aws/invoke client {:op :PutLogEvents
                              :request request}))]
@@ -90,7 +91,8 @@
         (send-log-events* config stream-name log-events nil))
 
       :else
-      sequence-token)))
+      (do (util/format-invoke-result-error result)
+          sequence-token))))
 
 (defn- send-log-events
   [config rate-limiter log-level sequence-token log-events]
